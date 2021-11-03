@@ -1,0 +1,22 @@
+# Outline
+
+
+## Todays common uses software pipelines in proteomics
+
+MaxQuant
+FragPipe
+Biognosys
+...
+
+## R related proteomics packages
+
+CRAN:
+ https://CRAN.R-project.org/package=opentimsr 
+ https://CRAN.R-project.org/package=protViz
+ 
+Bioconductor:
+ https://bioconductor.org/packages/release/BiocViews.html#___Proteomics
+ 
+## R package frameworks
+
+Spectra
