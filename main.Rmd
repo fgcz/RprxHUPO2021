@@ -1,5 +1,88 @@
-# Outline
+---
+title: "Proteomcis in R"
+author: "Christian Panse <cp@fgz.ethz.ch> & Tobias Kockmann <tobias.kockmann@fgcz.ethz.ch>"
+date: "11/11/2021"
+output:
+  ioslides_presentation:
+    widescreen: yes
+    smaller: no
+  beamer_presentation: default
+---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, eval=TRUE)
+```
+
+## What are we providing?
+Service, training, tailored R&D in the area of:
+
+- Genomics
+- Metabolomics
+- Proteomics
+
+## Orbitrap run statistics
+As core facility we generate ~20K Orbitrap runs a year:
+
+```{r numberRuns, fig.retina=3, echo=FALSE}
+S <- data.frame(year = c(2012:2020),
+           all = c(12295, 15982, 15190, 16726, 19251, 24588, 28814, 30531, 27176),
+           clean = c(881, 1788, 1700,  2228, 2121, 2965, 4097, 6677, 6529),
+           qc = c(1952,  3326, 2542,2821, 4027, 4435, 5640, 5247, 3761))
+plot(all ~ year, data=S, pch=16, type='b', lwd=2, ylim=c(0,max(S$all)), xlim=c(2012,2020), ylab='number of runs'); lines(S$qc ~ S$year,type='b', col='red'); lines(S$clean ~ S$year,type='b', col='green'); legend("topleft", c('all', 'qc', 'clean'), pch=16, col=c('black', 'red', 'green')); box(); lines(S$all-(S$qc +S$clean) ~ S$year,type='b', col='blue');
+```
+
+while operating up to 15 Orbitrap based LC-MS systems. (strong ThermoFisher MS fleet)
+
+<div class='notes'>
+|year  |  2012|  2013|  2014|  2015|  2016|  2017|  2018|  2019|  2020| 2021|
+|:-----|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|----:|
+|all   | 12295| 15982| 15190| 16726| 19251| 24588| 28814| 30531| 27176| 6261|
+|clean |   881|  1788|  1700|  2228|  2121|  2965|  4097|  6677|  6529| 1449|
+|qc    |  1952|  3326|  2542|  2821|  4027|  4435|  5640|  5247|  3761|  820|
+
+</div>
+
+
+## How do we use R in our core facility?
+
+- Quality control 
+- LC-MS method optimization
+- Statistics and visualization
+- Automatic report generation
+
+## Example on how we use R
+
+- autoQC
+- rawDiag
+- reporting
+- proLFQa
+
+### DISCLAIMER
+In **proteomics**
+we do **NOT** use R for identification and quantification
+(no LC-MS feature finding) tasks.
+
+<div class="note">
+here we use mascot, comet, MaxQuant, MS-FRAGGER, Spectronaut ...
+</div>
+
+
+
+
+## Idea software
+
+- runs on multi-process/user systems on all major platforms
+- software ship with support 
+- license is independent of the number of users
+
+
+## Lessons learned
+
+...
+...
+
+
+# Related work
 
 ## Todays common uses software pipelines in proteomics
 
