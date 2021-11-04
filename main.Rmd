@@ -68,13 +68,13 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 
 ## Why we like R... in general 
 
-* R is free and open-source
-* R provides an active and engaged community (ask questions, find support)
-* R code development is fast
-* R code runs on all major hardware platforms (incl. HPC clusters and MC computing)
-* R has become the go-to language for statistical modeling/Data Science
-* R provides powerful graphical frameworks for data visualization
-* A bit of personal history ;-)
+> - R is free and open-source
+> - R provides an active and engaged community (ask questions, find support)
+> - R code development is fast
+> - R code runs on all major hardware platforms (incl. HPC clusters and MC computing)
+> - R has become the go-to language for statistical modeling/Data Science
+> - R provides powerful graphical frameworks for data visualization
+> - A bit of personal history ;-)
 
 ## A case study
 
