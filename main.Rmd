@@ -18,6 +18,9 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, eval=TRUE)
 source("help-functions.R")
 ```
 
+# HUPO 2021 Reconnect Bioinformatics Hub
+Thursday, November 11, 2021
+11:30 – 12:00: Session #5b
 
 ## Overview
 
@@ -71,9 +74,13 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 * R code runs on all major hardware platforms (incl. HPC clusters and MC computing)
 * R has become the go-to language for statistical modeling/Data Science
 * R provides powerful graphical frameworks for data visualization
-* Personal history ;-)
+* A bit of personal history ;-)
 
+## A case study
 
+LFQ service workflow (includes all tasks listed before)
+
+![](PictureLFQWorkflow2.png)
 
 ## Example R code snippet {.columns-2 .smaller}
 
