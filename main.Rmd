@@ -76,7 +76,7 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 > - R provides powerful graphical frameworks for data visualization
 > - A bit of personal history ;-)
 
-## A case study
+## A case study {data-background=PictureLFQWorkflow2.png data-background-size=cover}
 
 LFQ service workflow (includes all tasks listed before)
 
