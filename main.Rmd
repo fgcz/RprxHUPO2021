@@ -19,10 +19,6 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, eval=TRUE)
 source("help-functions.R")
 ```
 
-# HUPO 2021 Reconnect Bioinformatics Hub
-Thursday, November 11, 2021
-11:30 – 12:00: Session #5b
-
 ## Overview
 
 ### Key aspects
