@@ -21,18 +21,18 @@ source("help-functions.R")
 
 ## Overview
 
-**Key aspects**
+### Key aspects
 
 * How do we apply R for computational MS (compMS)?
 * What have we learned during our own R software development projects?
 * Which role will R play in the future compMS landscape?
 
-**Perspectives**
+### Perspectives
 
 * User
 * Developer
 
-Both are biased by our professional environment: Omics core facility
+Disclaimer: Both views are biased by our professional environment
 
 ## Our professional environment
 
@@ -49,25 +49,30 @@ We offer/support analytical services, training, collaborative R&D in:
 Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer TOFs. 
 
 ## How we use R
+
+### Tasks
+
 * Generation of sample queues
 * System suitability/quality control
 * LC-MS method optimization (rawDiag)
-* Statisical analysis (MSstats, proLFQa, ...)
+* Statisical analysis (MSstats, proLFQa, TPP, ...)
 * Reporting (Rmarkdown)
 
-## Why we use R? 
+### Modes
 
-### Experience
-* S 80s - visualization and statistics
-* R 90s Sweave
-* useR! 2004 - CRAN, Bioconductor
-*  RStudio, Rtidy, Rmarkdow
+* Interactive web applications (Shiny) connected to our core LIMS system
+* Scripts are running on HPC cluster as parts of analysis pipelines
 
-### Fun - lattice package
+## Why we like R... in general 
 
-### Fast - prototyping
+* R is free and open-source
+* R provides an active and engaged community (ask questions, find support)
+* R code development is fast
+* R code runs on all major hardware platforms (incl. HPC clusters and MC computing)
+* R has become the go-to language for statistical modeling/Data Science
+* R provides powerful graphical frameworks for data visualization
+* Personal history ;-)
 
-### Runs on all major hardware platforms
 
 
 ## Example R code snippet {.columns-2 .smaller}
