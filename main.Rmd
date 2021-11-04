@@ -1,5 +1,5 @@
 ---
-title: "Proteomcis in R"
+title: "Proteomcis in R: a perspective view from a core facility"
 author: "Christian Panse <cp@fgz.ethz.ch> & Tobias Kockmann <tobias.kockmann@fgcz.ethz.ch>"
 date: "11/11/2021"
 output:
@@ -17,6 +17,85 @@ output:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, eval=TRUE)
 source("help-functions.R")
 ```
+
+
+## Overview
+
+
+- Initiate discussion
+
+
+## Perspective
+
+### User
+### Developer
+
+## How we use R
+- instrument queue configuration
+- quality control (maybe we show an example)
+- rawDiag - method development
+- reporting - via Rmarkdown
+- statisical post processing, e.g., MSstats, proLFQa, ...
+
+## Why we use R? 
+
+### Experience
+* S 80s - visualization and statistics
+* R 90s Sweave
+* useR! 2004 - CRAN, Bioconductor
+*  RStudio, Rtidy, Rmarkdow
+
+### Fun - lattice package
+
+### Fast - prototyping
+
+### Runs on all major hardware platforms
+
+
+## Example R code snippet {.columns-2 .smaller}
+
+for generating an LC-MS instrument queue 
+
+```{r plate}
+set.seed(1)
+
+QConf <- 
+  iris[c(1:15, 51:65, 101:115), ] |>
+  protViz::assignPlatePosition() |>
+  protViz::blockRandom(x = "Species") |> 
+  protViz::insertSamples(howoften=4,
+        stdPosX='6', stdPosY='F', plate=1,
+        stdName = "clean",
+        volume=2,
+        method="C:\\Xcalibur\\general_clean") 
+
+```
+
+<p class="forceBreak"></p>
+
+```{r plotPlate, fig.width=4.5, fig.height=5, echo=FALSE}
+op <- par(mar=c(4,4,1,1))
+  .plotPlate(QConf, 'Species')
+```
+
+
+## Lessons learned
+
+
+
+
+## What can R achieve?
+
+* AI?
+
+
+
+
+# BACKUP
+
+## R interaction with a typical proteomics pipeline
+
+
 
 ## What are we providing?
 Service, training, tailored R&D in the area of:
@@ -81,11 +160,6 @@ here we use mascot, comet, MaxQuant, MS-FRAGGER, Spectronaut ...
 - license is independent of the number of users
 
 
-## Lessons learned
-
-...
-...
-
 
 # Related work
 
@@ -110,20 +184,3 @@ Bioconductor:
 Spectra
 
 
-## Example R code snippet for generating an LC-MS instrument queue {.columns-2 .smaller}
-
-
-```{r plate}
-set.seed(1)
-
-QConf <- iris[c(1:15, 51:65, 101:115), ] |>
-  protViz::assignPlatePosition() |>
-  protViz::blockRandom(x = "Species")
-```
-
-<p class="forceBreak"></p>
-
-```{r plotPlate, fig.width=4.5, fig.height=5, echo=FALSE}
-op <- par(mar=c(4,4,1,1))
-  .plotPlate(QConf, 'Species')
-```

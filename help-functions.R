@@ -21,3 +21,29 @@
   
   text(x$x, y0, 1:nrow(x))
 }
+
+
+dump <- function(){
+iris |>
+head(48 + 48 - 3) |>
+  assignPlatePosition(volume=1, plate = c(2,1)) |>
+  blockRandom() |>
+  na.omit() |>
+  insertSamples(howoften=4, begin=FALSE, end=FALSE,
+                stdPosX='6', stdPosY='F', plate=1, stdName = "clean",
+                volume=2,
+                method="C:\\Xcalibur\\methods\\__Standard_methods\\general_clean") |> 
+  insertSamples(howoften=8, begin=FALSE, end=FALSE,
+                stdPosX='8', stdPosY='F', plate=1, stdName = "autoQC01",
+                volume=2,
+                method="C:\\Xcalibur\\methods\\__autoQC\\trap\\autoQC01") |>
+  insertSamples(howoften=0, begin=FALSE, end=TRUE,
+                volume=2,
+                stdPosX='7', stdPosY='F', plate=1, stdName = "autoQC4L",
+                method="C:\\Xcalibur\\methods\\__autoQC\\trap\\autoQC4L")  |> 
+  protViz:::formatXCalibur(path=sprintf("D:\\Data2San\\p%d\\Proteomics\\%s\\%s_%s",
+                                        container,
+                                        instrument,
+                                        user,
+                                        format(Sys.time(), "%Y%m%d")))
+}
