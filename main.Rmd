@@ -82,7 +82,7 @@ LFQ service workflow (includes all tasks listed before)
 
 ![](PictureLFQWorkflow2.png)
 
-## Example R code snippet {.columns-2 .smaller}
+## Example R code snippet {.columns-2 .smaller .build}
 
 for generating an LC-MS instrument queue 
 
