@@ -1,5 +1,5 @@
 ---
-title: "Proteomcis in R from a core facility perspective"
+title: "Proteomcis in R from a user and developer perspective"
 author: "Christian Panse <cp@fgz.ethz.ch> & Tobias Kockmann <tobias.kockmann@fgcz.ethz.ch>"
 date: "11/11/2021"
 output:
@@ -21,14 +21,18 @@ source("help-functions.R")
 
 ## Overview
 
+Key aspects
 
-- Initiate discussion
+* How do we apply R for computational MS (compMS)?
+* What have we learned during our own R software development projects?
+* Which role will R play in the future compMS landscape?
 
+Perspective
 
-## Perspective
+* User
+* Developer
 
-### User
-### Developer
+Both are biased by our professional environment: Omics core facility
 
 ## How we use R
 - instrument queue configuration
