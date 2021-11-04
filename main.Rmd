@@ -58,7 +58,7 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 * Generation of sample queues
 * System suitability/quality control
 * LC-MS method optimization (rawDiag)
-* Statisical analysis (MSstats, proLFQa, TPP, ...)
+* Statisical analysis (MSstats, proLFQua, TPP, ...)
 * Reporting (Rmarkdown)
 
 ### Modes
