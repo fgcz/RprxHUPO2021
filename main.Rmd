@@ -1,7 +1,8 @@
 ---
-title: "Proteomics in R from a user and developer perspective"
+title: "Proteomics in R"
+subtitle: "HUPO 2021 Reconnect Bioinformatics Hub, Session #5b"
 author: "Christian Panse <cp@fgz.ethz.ch> & Tobias Kockmann <tobias.kockmann@fgcz.ethz.ch>"
-date: "11/11/2021"
+date: "Thursday, November 11, 2021, 11:30 – 12:00"
 output:
   ioslides_presentation:
     widescreen: yes
@@ -17,10 +18,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, eval=TRUE)
 source("help-functions.R")
 ```
-
-# HUPO 2021 Reconnect Bioinformatics Hub
-Thursday, November 11, 2021
-11:30 – 12:00: Session #5b
 
 ## Overview
 
@@ -50,6 +47,8 @@ We offer/support analytical services, training, collaborative R&D in:
 * Proteomics
 
 Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer TOFs. 
+
+# How do we apply R for compMS?
 
 ## How we use R
 
@@ -109,10 +108,10 @@ op <- par(mar=c(4,4,1,1))
 ```
 
 
-## Lessons learned
+# What have we learned during our own R software development projects?
 
 
-
+# Which role will R play in the future compMS landscape?
 
 ## What can R achieve?
 
