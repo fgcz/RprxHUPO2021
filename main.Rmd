@@ -1,5 +1,5 @@
 ---
-title: "Proteomcis in R: a perspective view from a core facility"
+title: "Proteomcis in R from a core facility perspective"
 author: "Christian Panse <cp@fgz.ethz.ch> & Tobias Kockmann <tobias.kockmann@fgcz.ethz.ch>"
 date: "11/11/2021"
 output:
