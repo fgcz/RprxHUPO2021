@@ -139,7 +139,6 @@ https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.ht
 
 # What have we learned during our own R software development projects?
 
-
 # Which role will R play in the future compMS landscape?
 
 ## The rise of machine learning
@@ -150,7 +149,7 @@ https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.ht
 * Many Data Science teams today are bilingual and some even sense a R & Python love story.
 * It becomes common to have mixed code, shared environments ([reticulate](https://rstudio.github.io/reticulate/?_ga=2.198172463.1830294086.1636107730-57468228.1602754776))
 
-```{r, echo=FALSE, out.width="25%"}
+```{r, echo=FALSE, out.width="25%", error=TRUE}
 knitr::include_graphics("reticulated_python.png")
 ```
 
@@ -163,6 +162,16 @@ knitr::include_graphics("reticulated_python.png")
 * [TimsPy](https://github.com/MatteoLacki/timspy) & [TimsR](https://github.com/MatteoLacki/timsr)
 
 Will proteomics frameworks in R and Python also move closer together?
+
+
+## Possible Discussion Items
+
+### DL py or R
+
+### Container - Scalable Data Analysis
+https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/epdf/10.1002/pmic.201900147
+
+### Future community setup
 
 # Appendix
 
