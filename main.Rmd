@@ -140,28 +140,11 @@ https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.ht
 
 # Which role will R play in the future compMS landscape?
 
-## What can R achieve?
+# Appendix
 
-* AI?
+## FGCZ Orbitrap run statistics
 
-
-
-
-# BACKUP
-
-## R interaction with a typical proteomics pipeline
-
-
-
-## What are we providing?
-Service, training, tailored R&D in the area of:
-
-- Genomics
-- Metabolomics
-- Proteomics
-
-## Orbitrap run statistics
-As core facility we generate ~20K Orbitrap runs a year:
+* ~20K Orbitrap runs a year:
 
 ```{r numberRuns, fig.retina=3, echo=FALSE}
 S <- data.frame(year = c(2012:2020),
@@ -171,7 +154,7 @@ S <- data.frame(year = c(2012:2020),
 plot(all ~ year, data=S, pch=16, type='b', lwd=2, ylim=c(0,max(S$all)), xlim=c(2012,2020), ylab='number of runs'); lines(S$qc ~ S$year,type='b', col='red'); lines(S$clean ~ S$year,type='b', col='green'); legend("topleft", c('all', 'qc', 'clean'), pch=16, col=c('black', 'red', 'green')); box(); lines(S$all-(S$qc +S$clean) ~ S$year,type='b', col='blue');
 ```
 
-while operating up to 15 Orbitrap based LC-MS systems. (strong ThermoFisher MS fleet)
+* 15 Orbitrap LC-MS systems. (Proteomics & Metabolomics)
 
 <div class='notes'>
 |year  |  2012|  2013|  2014|  2015|  2016|  2017|  2018|  2019|  2020| 2021|
@@ -183,64 +166,15 @@ while operating up to 15 Orbitrap based LC-MS systems. (strong ThermoFisher MS f
 </div>
 
 
-## How do we use R in our core facility?
+## R proteomics packages
 
-- Quality control 
-- LC-MS method optimization
-- Statistics and visualization
-- Automatic report generation
-
-## Example on how we use R
-
-- autoQC
-- rawDiag
-- reporting
-- proLFQa
-
-### DISCLAIMER
-In **proteomics**
-we do **NOT** use R for identification and quantification
-(no LC-MS feature finding) tasks.
-
-<div class="note">
-here we use mascot, comet, MaxQuant, MS-FRAGGER, Spectronaut ...
-</div>
-
-
-
-
-## Idea software
-
-- runs on multi-process/user systems on all major platforms
-- software ship with support 
-- license is independent of the number of users
-
-
-
-# Related work
-
-## Todays common uses software pipelines in proteomics
-
-MaxQuant
-FragPipe
-Biognosys
-...
-
-## R related proteomics packages
-
-CRAN:
+### CRAN
  https://CRAN.R-project.org/package=opentimsr 
  https://CRAN.R-project.org/package=protViz
  
-Bioconductor:
+### Bioconductor
  https://bioconductor.org/packages/release/BiocViews.html#___Proteomics
  
-## R package frameworks
-
-Spectra
-
-
-
 ## Session information {.smaller}
 
 ```{r sessioninfo, echo=FALSE}
