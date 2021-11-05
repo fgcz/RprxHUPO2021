@@ -83,6 +83,7 @@ LFQ service workflow (includes all tasks listed before)
 
 ![](PictureLFQWorkflow2.png)
 
+
 ## Example R code snippet {.columns-2 .smaller}
 
 for generating an LC-MS instrument queue, e.g., for a 48 well plate 85.4x127.5mm
@@ -110,6 +111,28 @@ plate <-
 op <- par(mar=c(4,4,1,1))
   .plotPlate(plate, 'group')
 ```
+
+## Example R code snippet TIC {.smaller}
+
+```{r EH4547.raw, error=TRUE, message = FALSE, warning = FALSE, echo = FALSE}
+# fetch via ExperimentHub
+library(ExperimentHub)
+eh <- ExperimentHub::ExperimentHub()
+EH4547 <- normalizePath(eh[["EH4547"]])
+
+(EH4547.raw <- paste0(EH4547, ".raw"))
+
+if (!file.exists(EH4547.raw)){
+  file.copy(EH4547, EH4547.raw)
+}
+```
+
+```{r xic, error=TRUE, fig.width=10, fig.height=3.5}
+rawrr::readChromatogram(rawfile = EH4547.raw, type = "tic") |>
+  plot()
+```
+
+https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.html
 
 
 # What have we learned during our own R software development projects?
