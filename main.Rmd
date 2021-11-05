@@ -85,7 +85,7 @@ LFQ service workflow (includes all tasks listed before)
 
 ## Example R code snippet {.columns-2 .smaller}
 
-for generating an LC-MS instrument queue 
+for generating an LC-MS instrument queue, e.g., for a 48 well plate 85.4x127.5mm
 
 ```{r plate, error=TRUE}
 set.seed(1)
