@@ -163,13 +163,12 @@ knitr::include_graphics("reticulated_python.png")
 
 Will proteomics frameworks in R and Python also move closer together?
 
-
-## Scalable Data Analysis
-
+## Scalable Data Analysis for Proteomics
 
 https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/epdf/10.1002/pmic.201900147
 
-## Community
+* R fits well into distributed & modular analysis workflows
+
 
 # Appendix
 
