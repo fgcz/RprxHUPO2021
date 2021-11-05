@@ -213,3 +213,10 @@ Bioconductor:
 Spectra
 
 
+
+## Session information {.smaller}
+
+```{r sessioninfo, echo=FALSE}
+sessionInfo()
+```
+
