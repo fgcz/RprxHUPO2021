@@ -115,7 +115,9 @@ op <- par(mar=c(4,4,1,1))
 ## Example R code snippet TIC {.smaller}
 
 ```{r EH4547.raw, error=TRUE, message = FALSE, warning = FALSE, echo = FALSE}
-# fetch via ExperimentHub
+## fetch raw file using ExperimentHub
+## data is part of tartare package
+## https://bioconductor.org/packages/3.14/data/experiment/html/tartare.html
 library(ExperimentHub)
 eh <- ExperimentHub::ExperimentHub()
 EH4547 <- normalizePath(eh[["EH4547"]])
