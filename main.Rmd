@@ -90,10 +90,12 @@ for generating an LC-MS instrument queue
 ```{r plate, error=TRUE}
 set.seed(1)
 
-QConf <- 
-  iris[c(1:15, 51:65, 101:115), ] |>
-  passignPlatePosition() |>
-  blockRandom(x = "Species") |> 
+plate <- 
+  data.frame(group = c(rep('A', 15),
+                       rep('B', 15),
+                       rep('C', 15))) |>
+  assignPlatePosition() |>
+  blockRandom(x = "group") |> 
   insertSamples(howoften=4,
         stdPosX='6', stdPosY='F', plate=1,
         stdName = "clean",
@@ -106,7 +108,7 @@ QConf <-
 
 ```{r plotPlate, fig.width=4.5, fig.height=5, echo=FALSE}
 op <- par(mar=c(4,4,1,1))
-  .plotPlate(QConf, 'Species')
+  .plotPlate(plate, 'group')
 ```
 
 
