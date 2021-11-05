@@ -144,8 +144,6 @@ https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.ht
 
 ## FGCZ Orbitrap run statistics
 
-* ~20K Orbitrap runs a year:
-
 ```{r numberRuns, fig.retina=3, echo=FALSE}
 S <- data.frame(year = c(2012:2020),
            all = c(12295, 15982, 15190, 16726, 19251, 24588, 28814, 30531, 27176),
@@ -154,7 +152,7 @@ S <- data.frame(year = c(2012:2020),
 plot(all ~ year, data=S, pch=16, type='b', lwd=2, ylim=c(0,max(S$all)), xlim=c(2012,2020), ylab='number of runs'); lines(S$qc ~ S$year,type='b', col='red'); lines(S$clean ~ S$year,type='b', col='green'); legend("topleft", c('all', 'qc', 'clean'), pch=16, col=c('black', 'red', 'green')); box(); lines(S$all-(S$qc +S$clean) ~ S$year,type='b', col='blue');
 ```
 
-* 15 Orbitrap LC-MS systems. (Proteomics & Metabolomics)
+15 Orbitrap LC-MS systems (Proteomics & Metabolomics)
 
 <div class='notes'>
 |year  |  2012|  2013|  2014|  2015|  2016|  2017|  2018|  2019|  2020| 2021|
@@ -169,11 +167,13 @@ plot(all ~ year, data=S, pch=16, type='b', lwd=2, ylim=c(0,max(S$all)), xlim=c(2
 ## R proteomics packages
 
 ### CRAN
- https://CRAN.R-project.org/package=opentimsr 
- https://CRAN.R-project.org/package=protViz
+
+https://CRAN.R-project.org/package=opentimsr 
+https://CRAN.R-project.org/package=protViz
  
 ### Bioconductor
- https://bioconductor.org/packages/release/BiocViews.html#___Proteomics
+
+https://bioconductor.org/packages/release/BiocViews.html#___Proteomics
  
 ## Session information {.smaller}
 
