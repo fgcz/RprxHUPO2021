@@ -150,6 +150,34 @@ tbd.
 
 # What have we learned during our own R software development projects?
 
+## R packages
+
+* [protViz](https://cran.r-project.org/package=protViz) CRAN
+* [rawDiag](https://github.com/fgcz/rawDiag) only GitHub
+* [rawrr](https://bioconductor.org/packages/release/bioc/html/rawrr.html) BioC 3.14 software package
+* [tartare](https://bioconductor.org/packages/release/data/experiment/html/tartare.html) BioC 3.14 ExpHub package
+* [MsBackendRawFileReader](https://bioconductor.org/packages/devel/bioc/html/MsBackendRawFileReader.html) BioC 3.14 Software package
+
+## FAIR principles for research software written in R {.smaller}
+
+**Make research software ﬁndable, accessible, interoperable, and reusable (FAIR)!**[^1]
+
+Using [Bioconductor](https://bioconductor.org/) (BioC) tools is a great way to implement these principles!
+
+Develop and release your R code as BioC software package:
+
+- Automated checks (`R CMD check`, `BiocCheck()`)
+- Professional peer review by a research software engineer (BioC core team)
+- Unit tests (`devtools::testthat()`) and CI (building the package on different platforms)
+- Documentation (man pages, vignettes)
+- Dependency management
+- Code style
+- Installation (`BiocManager::`)
+
+Additional BioC package types: Annotation/Experiment Data(Hub), [Workflow](https://contributions.bioconductor.org/workflow-packages.html)
+
+[^1]:Katz, D. S., Gruenpeter, M. & Honeyman, T. Patterns 2, 100222 (2021).
+
 # Which role will R play in the future compMS landscape?
 
 ## The rise of machine learning
