@@ -146,11 +146,11 @@ https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.ht
 
 ## R packages
 
-* [protViz](https://cran.r-project.org/package=protViz) CRAN package
-* [rawDiag](https://github.com/fgcz/rawDiag) only GitHub (source + releases)
-* [rawrr](https://bioconductor.org/packages/release/bioc/html/rawrr.html) BioC 3.14 Software package
-* [tartare](https://bioconductor.org/packages/release/data/experiment/html/tartare.html) BioC 3.14 ExpHub package
-* [MsBackendRawFileReader](https://bioconductor.org/packages/devel/bioc/html/MsBackendRawFileReader.html) BioC 3.14 Software package
+- [protViz](https://cran.r-project.org/package=protViz) CRAN package
+- [rawDiag](https://github.com/fgcz/rawDiag) only GitHub (source + releases)
+- [rawrr](https://bioconductor.org/packages/release/bioc/html/rawrr.html) BioC 3.14 Software package
+- [tartare](https://bioconductor.org/packages/release/data/experiment/html/tartare.html) BioC 3.14 ExpHub package
+- [MsBackendRawFileReader](https://bioconductor.org/packages/release/bioc/html/MsBackendRawFileReader.html) BioC 3.14 Software package
 
 ## FAIR principles for research software written in R {.smaller}
 
@@ -168,9 +168,29 @@ Develop and release your R code as BioC software package:
 - Code style
 - Installation (`BiocManager::`)
 
-Additional BioC package types: Annotation/Experiment Data(Hub), [Workflow](https://contributions.bioconductor.org/workflow-packages.html)
-
 [^1]:Katz, D. S., Gruenpeter, M. & Honeyman, T. Patterns 2, 100222 (2021).
+
+## Package ecosystems
+
+- Think about additional BioC package types for data & metadata: Annotation/Experiment Data(Hub), [Workflow](https://contributions.bioconductor.org/workflow-packages.html)
+- Write packages that solve specific & well defined tasks and connect them in package ecosystems.
+- ~~Monolytic packages that try to solve everything.~~
+
+```{r, echo=FALSE, out.width="20%", error=TRUE}
+
+knitr::include_graphics("RforMSlogo.png")
+
+```
+
+https://www.rformassspectrometry.org/
+
+***
+
+```{r, echo=FALSE, out.width="100%", error=TRUE}
+
+knitr::include_graphics("ecosystem.jpeg")
+
+```
 
 # Which role will R play in the future compMS landscape?
 
