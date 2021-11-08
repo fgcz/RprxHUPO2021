@@ -155,15 +155,33 @@ p_2 <- pl$pca() + ggplot2::theme(legend.position = "none")
 plot.new(); pl$heatmap(); ggpubr::ggarrange(p_1, p_2)
 ```
 
-# What have we learned during our own R software development projects?
+
+
+```{r echo=FALSE, eval=FALSE}
+library(prolfqua); library(ggplot2)
+d <- prolfqua::data_ionstar$filtered() # load peptide level data
+lfqd <- LFQData$new(d$data, d$config)  # create R6 obejct
+lfqt <-  lfqd$get_Transformer()$log2()$robscale()$lfq # transform intensities
+lfqp <- lfqt$get_Aggregator()$medpolish() # infer protein intensities from peptide intensities
+models <- build_model(lfqp, strategy_lm( "medpolish ~ dilution.") ) # fit model
+contr <- Contrasts$new(models,
+                       c("dilution_(9/7.5)_1.2" =   "dilution.e - dilution.d",
+                         "dilution_(7.5/6)_1.25" =   "dilution.d - dilution.c") ) %>% ContrastsModerated$new() # compute contrasts
+
+pl <- contr$get_Plotter()
+p1 <- pl$histogram()$p.value
+p2 <- pl$volcano()$FDR + theme(legend.position = "bottom")
+gridExtra::grid.arrange(p1, p2, ncol = 2)
+```
+# What have we learned during our own R software development?
 
 ## R packages
 
-* [protViz](https://cran.r-project.org/package=protViz) CRAN
-* [rawDiag](https://github.com/fgcz/rawDiag) only GitHub
-* [rawrr](https://bioconductor.org/packages/release/bioc/html/rawrr.html) BioC 3.14 software package
-* [tartare](https://bioconductor.org/packages/release/data/experiment/html/tartare.html) BioC 3.14 ExpHub package
-* [MsBackendRawFileReader](https://bioconductor.org/packages/devel/bioc/html/MsBackendRawFileReader.html) BioC 3.14 Software package
+- [protViz](https://cran.r-project.org/package=protViz) CRAN package
+- [rawDiag](https://github.com/fgcz/rawDiag) only GitHub (source + releases)
+- [rawrr](https://bioconductor.org/packages/release/bioc/html/rawrr.html) BioC 3.14 Software package
+- [tartare](https://bioconductor.org/packages/release/data/experiment/html/tartare.html) BioC 3.14 ExpHub package
+- [MsBackendRawFileReader](https://bioconductor.org/packages/release/bioc/html/MsBackendRawFileReader.html) BioC 3.14 Software package
 
 ## FAIR principles for research software written in R {.smaller}
 
@@ -181,17 +199,38 @@ Develop and release your R code as BioC software package:
 - Code style
 - Installation (`BiocManager::`)
 
-Additional BioC package types: Annotation/Experiment Data(Hub), [Workflow](https://contributions.bioconductor.org/workflow-packages.html)
-
 [^1]:Katz, D. S., Gruenpeter, M. & Honeyman, T. Patterns 2, 100222 (2021).
+
+## Grow package ecosystems
+
+- Think about using additional BioC package types for data & metadata: Annotation/Experiment Data(Hub), [Workflow](https://contributions.bioconductor.org/workflow-packages.html)
+- Write packages that solve specific & well defined tasks and connect them in package ecosystems (prime example: [tidyverse](https://www.tidyverse.org/)).
+- ~~Monolytic packages that try to solve everything.~~
+
+
+```{r, echo=FALSE, out.width="20%", error=TRUE}
+
+knitr::include_graphics("RforMSlogo.png")
+
+```
+
+https://www.rformassspectrometry.org/
+
+***
+
+```{r, echo=FALSE, out.width="100%", error=TRUE}
+
+knitr::include_graphics("ecosystem.jpeg")
+
+```
 
 # Which role will R play in the future compMS landscape?
 
 ## The rise of machine learning
 
-* In general we expect a steady increase of ML/DL in compMS
-* The two primary languages for these tasks are Python and R
-* More and more frameworks, APIs and interfaces become available (Keras, TensorFlow, ...)
+- In general we expect a steady increase of ML/DL in compMS
+- The two primary languages for these tasks are Python and R
+- More and more frameworks, APIs and interfaces become available (Keras, TensorFlow, ...)
 
 ```{r, echo=FALSE, out.width="25%", error=TRUE}
 
@@ -205,14 +244,14 @@ knitr::include_graphics("pMLinR.jpg")
 
 ## Closer collaboration of Python and R in compMS?
 
-* Many Data Science teams today are bilingual and some even sense a R & Python love story.
-* It becomes common to have mixed code, shared environments ([reticulate](https://rstudio.github.io/reticulate/?_ga=2.198172463.1830294086.1636107730-57468228.1602754776))
+- Many Data Science teams today are bilingual and some even sense a R & Python love story.
+- It becomes common to have mixed code, shared environments ([reticulate](https://rstudio.github.io/reticulate/?_ga=2.198172463.1830294086.1636107730-57468228.1602754776))
 
 Proteomics frameworks in Python:
 
-* [PyOpenMS](https://github.com/OpenMS/OpenMS/wiki/pyOpenMS)
-* [Pyteomics](https://github.com/levitsky/pyteomics)
-* [AlphaPept](https://github.com/MannLabs/alphapept)
+- [PyOpenMS](https://github.com/OpenMS/OpenMS/wiki/pyOpenMS)
+- [Pyteomics](https://github.com/levitsky/pyteomics)
+- [AlphaPept](https://github.com/MannLabs/alphapept)
 
 Will proteomics frameworks in R and Python also move closer together?
 
@@ -226,8 +265,8 @@ knitr::include_graphics("reticulated_python.png")
 knitr::include_graphics("pmic13223-fig-0002-m.jpeg")
 ```
 
-* R fits well into concept of distributed & modular analysis workflows
-* R is a good tool for scalable and reproducible data analysis!
+- R fits well into concept of distributed & modular analysis workflows
+- R is a good tool for scalable and reproducible data analysis!
 
 
 # Appendix
