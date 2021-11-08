@@ -170,11 +170,12 @@ Develop and release your R code as BioC software package:
 
 [^1]:Katz, D. S., Gruenpeter, M. & Honeyman, T. Patterns 2, 100222 (2021).
 
-## Package ecosystems
+## Grow package ecosystems
 
-- Think about additional BioC package types for data & metadata: Annotation/Experiment Data(Hub), [Workflow](https://contributions.bioconductor.org/workflow-packages.html)
-- Write packages that solve specific & well defined tasks and connect them in package ecosystems.
+- Think about using additional BioC package types for data & metadata: Annotation/Experiment Data(Hub), [Workflow](https://contributions.bioconductor.org/workflow-packages.html)
+- Write packages that solve specific & well defined tasks and connect them in package ecosystems (prime example: [tidyverse](https://www.tidyverse.org/)).
 - ~~Monolytic packages that try to solve everything.~~
+
 
 ```{r, echo=FALSE, out.width="20%", error=TRUE}
 
