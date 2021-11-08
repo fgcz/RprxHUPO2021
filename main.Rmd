@@ -142,10 +142,17 @@ rawrr::readChromatogram(EH4547.raw, mass = iRTmz, tol = 10, type = "xic", filter
 https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.html
 
 
-## Example: Reporting using Rpkg proLFQua
+## Example: Reporting using Rpkg proLFQua {.smaller}
 
-```{proLFQua}
-tbd.
+```{r proLFQua, warning=FALSE, fig.height=3, fig.width=5, error=TRUE}
+# https://wolski.github.io/prolfqua/
+d <- prolfqua::data_ionstar$filtered()                              # load data
+lfqd <- prolfqua::LFQData$new(d$data, d$config)                     # constructer R6 object 
+lfqt <-  lfqd$get_Transformer()$log2()$robscale()$lfq               # normalize data
+pl <- lfqt$get_Plotter()                                            # get plotter object
+p_1 <- pl$intensity_distribution_density()  + ggplot2::theme(legend.position = "none")
+p_2 <- pl$pca() + ggplot2::theme(legend.position = "none")
+plot.new(); pl$heatmap(); ggpubr::ggarrange(p_1, p_2)
 ```
 
 # What have we learned during our own R software development projects?
