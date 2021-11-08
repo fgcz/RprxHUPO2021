@@ -84,7 +84,7 @@ LFQ service workflow (includes all tasks listed before)
 ![](PictureLFQWorkflow2.png)
 
 
-## Example R code snippet {.columns-2 .smaller}
+## Example: define 48 well {.columns-2 .smaller}
 
 for generating an LC-MS instrument queue, e.g., for a 48 well plate 85.4x127.5mm
 
@@ -141,6 +141,12 @@ rawrr::readChromatogram(EH4547.raw, mass = iRTmz, tol = 10, type = "xic", filter
 
 https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.html
 
+
+## Example: Reporting using Rpkg proLFQua
+
+```{proLFQua}
+tbd.
+```
 
 # What have we learned during our own R software development projects?
 
