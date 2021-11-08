@@ -150,7 +150,7 @@ https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.ht
 * Many Data Science teams today are bilingual and some even sense a R & Python love story.
 * It becomes common to have mixed code, shared environments ([reticulate](https://rstudio.github.io/reticulate/?_ga=2.198172463.1830294086.1636107730-57468228.1602754776))
 
-```{r, echo=FALSE, out.width="25%"}
+```{r, echo=FALSE, out.width="25%", error=TRUE}
 knitr::include_graphics("reticulated_python.png")
 ```
 
