@@ -146,9 +146,9 @@ https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.ht
 
 ## R packages
 
-* [protViz](https://cran.r-project.org/package=protViz) CRAN
-* [rawDiag](https://github.com/fgcz/rawDiag) only GitHub
-* [rawrr](https://bioconductor.org/packages/release/bioc/html/rawrr.html) BioC 3.14 software package
+* [protViz](https://cran.r-project.org/package=protViz) CRAN package
+* [rawDiag](https://github.com/fgcz/rawDiag) only GitHub (source + releases)
+* [rawrr](https://bioconductor.org/packages/release/bioc/html/rawrr.html) BioC 3.14 Software package
 * [tartare](https://bioconductor.org/packages/release/data/experiment/html/tartare.html) BioC 3.14 ExpHub package
 * [MsBackendRawFileReader](https://bioconductor.org/packages/devel/bioc/html/MsBackendRawFileReader.html) BioC 3.14 Software package
 
@@ -176,9 +176,9 @@ Additional BioC package types: Annotation/Experiment Data(Hub), [Workflow](https
 
 ## The rise of machine learning
 
-* In general we expect a steady increase of ML/DL in compMS
-* The two primary languages for these tasks are Python and R
-* More and more frameworks, APIs and interfaces become available (Keras, TensorFlow, ...)
+- In general we expect a steady increase of ML/DL in compMS
+- The two primary languages for these tasks are Python and R
+- More and more frameworks, APIs and interfaces become available (Keras, TensorFlow, ...)
 
 ```{r, echo=FALSE, out.width="25%", error=TRUE}
 
@@ -192,14 +192,14 @@ knitr::include_graphics("pMLinR.jpg")
 
 ## Closer collaboration of Python and R in compMS?
 
-* Many Data Science teams today are bilingual and some even sense a R & Python love story.
-* It becomes common to have mixed code, shared environments ([reticulate](https://rstudio.github.io/reticulate/?_ga=2.198172463.1830294086.1636107730-57468228.1602754776))
+- Many Data Science teams today are bilingual and some even sense a R & Python love story.
+- It becomes common to have mixed code, shared environments ([reticulate](https://rstudio.github.io/reticulate/?_ga=2.198172463.1830294086.1636107730-57468228.1602754776))
 
 Proteomics frameworks in Python:
 
-* [PyOpenMS](https://github.com/OpenMS/OpenMS/wiki/pyOpenMS)
-* [Pyteomics](https://github.com/levitsky/pyteomics)
-* [AlphaPept](https://github.com/MannLabs/alphapept)
+- [PyOpenMS](https://github.com/OpenMS/OpenMS/wiki/pyOpenMS)
+- [Pyteomics](https://github.com/levitsky/pyteomics)
+- [AlphaPept](https://github.com/MannLabs/alphapept)
 
 Will proteomics frameworks in R and Python also move closer together?
 
@@ -213,8 +213,8 @@ knitr::include_graphics("reticulated_python.png")
 knitr::include_graphics("pmic13223-fig-0002-m.jpeg")
 ```
 
-* R fits well into concept of distributed & modular analysis workflows
-* R is a good tool for scalable and reproducible data analysis!
+- R fits well into concept of distributed & modular analysis workflows
+- R is a good tool for scalable and reproducible data analysis!
 
 
 # Appendix
