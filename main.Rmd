@@ -142,7 +142,7 @@ rawrr::readChromatogram(EH4547.raw, mass = iRTmz, tol = 10, type = "xic", filter
 https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.html
 
 
-# What have we learned during our own R software development projects?
+# What have we learned during our own R software development?
 
 ## R packages
 
