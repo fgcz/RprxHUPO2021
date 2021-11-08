@@ -112,7 +112,7 @@ op <- par(mar=c(4,4,1,1))
   .plotPlate(plate, 'group')
 ```
 
-## Example R code snippet TIC {.smaller}
+## Example: XIC for iRT peptide precursors {.smaller}
 
 ```{r EH4547.raw, error=TRUE, message = FALSE, warning = FALSE, echo = FALSE}
 ## fetch raw file using ExperimentHub
@@ -122,16 +122,21 @@ library(ExperimentHub)
 eh <- ExperimentHub::ExperimentHub()
 EH4547 <- normalizePath(eh[["EH4547"]])
 
-(EH4547.raw <- paste0(EH4547, ".raw"))
+EH4547.raw <- paste0(EH4547, ".raw")
 
 if (!file.exists(EH4547.raw)){
   file.copy(EH4547, EH4547.raw)
 }
+
+iRTmz <- c(487.2571, 547.2984, 622.8539, 636.8695, 644.8230, 669.8384, 683.8282,
+           683.8541, 699.3388, 726.8361, 776.9301)
+names(iRTmz) <- c("LGGNEQVTR", "YILAGVENSK", "GTFIIDPGGVIR", "GTFIIDPAAVIR", "GAGSSEPVTGLDAK",
+  "TPVISGGPYEYR", "VEATFGVDESNAK", "TPVITGAPYEYR", "DGLDAASYYAPVR", "ADVTPADFSEWSK", "LFLQFGAQGSPFLK")
 ```
 
-```{r xic, error=TRUE, fig.width=10, fig.height=3.5}
-rawrr::readChromatogram(rawfile = EH4547.raw, type = "tic") |>
-  plot()
+```{r xic, error=TRUE, fig.width=10, fig.height=4, echo=TRUE, message=FALSE, warning=FALSE}
+rawrr::readChromatogram(EH4547.raw, mass = iRTmz, tol = 10, type = "xic", filter = "ms") |> 
+  plot(diagnostic = TRUE)
 ```
 
 https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.html
@@ -176,9 +181,13 @@ Additional BioC package types: Annotation/Experiment Data(Hub), [Workflow](https
 * More and more frameworks, APIs and interfaces become available (Keras, TensorFlow, ...)
 
 ```{r, echo=FALSE, out.width="25%", error=TRUE}
+
+#knitr::include_graphics("reticulated_python.png")
+
 knitr::include_graphics("DeepLearningWithR.jpg")
 knitr::include_graphics("IntroductionToMachineLearningWithR.jpeg")
 knitr::include_graphics("pMLinR.jpg")
+
 ```
 
 ## Closer collaboration of Python and R in compMS?
