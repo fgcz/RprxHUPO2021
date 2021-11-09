@@ -155,8 +155,6 @@ p_2 <- pl$pca() + ggplot2::theme(legend.position = "none")
 plot.new(); pl$heatmap(); ggpubr::ggarrange(p_1, p_2)
 ```
 
-
-
 ```{r echo=FALSE, eval=FALSE}
 library(prolfqua); library(ggplot2)
 d <- prolfqua::data_ionstar$filtered() # load peptide level data
@@ -182,6 +180,7 @@ gridExtra::grid.arrange(p1, p2, ncol = 2)
 - [rawrr](https://bioconductor.org/packages/release/bioc/html/rawrr.html) BioC 3.14 Software package
 - [tartare](https://bioconductor.org/packages/release/data/experiment/html/tartare.html) BioC 3.14 ExpHub package
 - [MsBackendRawFileReader](https://bioconductor.org/packages/release/bioc/html/MsBackendRawFileReader.html) BioC 3.14 Software package
+- [proLFQua](https://github.com/wolski/prolfqua) only GitHub (source + releases)
 
 ## FAIR principles for research software written in R {.smaller}
 
@@ -208,20 +207,16 @@ Develop and release your R code as BioC software package:
 - ~~Monolytic packages that try to solve everything.~~
 
 
-```{r, echo=FALSE, out.width="20%", error=TRUE}
-
+```{r RforMSlogo, echo=FALSE, out.width="20%", error=TRUE}
 knitr::include_graphics("RforMSlogo.png")
-
 ```
 
 https://www.rformassspectrometry.org/
 
 ***
 
-```{r, echo=FALSE, out.width="100%", error=TRUE}
-
+```{r ecosystem, echo=FALSE, out.width="100%", error=TRUE}
 knitr::include_graphics("ecosystem.jpeg")
-
 ```
 
 # Which role will R play in the future compMS landscape?
@@ -232,14 +227,11 @@ knitr::include_graphics("ecosystem.jpeg")
 - The two primary languages for these tasks are Python and R
 - More and more frameworks, APIs and interfaces become available (Keras, TensorFlow, ...)
 
-```{r, echo=FALSE, out.width="25%", error=TRUE}
-
+```{r DeepLearning, echo=FALSE, out.width="25%", error=TRUE}
 #knitr::include_graphics("reticulated_python.png")
-
 knitr::include_graphics("DeepLearningWithR.jpg")
 knitr::include_graphics("IntroductionToMachineLearningWithR.jpeg")
 knitr::include_graphics("pMLinR.jpg")
-
 ```
 
 ## Closer collaboration of Python and R in compMS?
@@ -255,7 +247,7 @@ Proteomics frameworks in Python:
 
 Will proteomics frameworks in R and Python also move closer together?
 
-```{r, echo=FALSE, out.width="20%", error=TRUE}
+```{r reticulate, echo=FALSE, out.width="20%", error=TRUE}
 knitr::include_graphics("reticulated_python.png")
 ```
 
