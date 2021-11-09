@@ -15,9 +15,8 @@ output:
 </style>
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, eval=TRUE)
+knitr::opts_chunk$set(echo = TRUE,  eval=TRUE, message=FALSE, warning=FALSE)
 source("help-functions.R")
-
 library(protViz)
 ```
 
@@ -92,9 +91,9 @@ for generating an LC-MS instrument queue, e.g., for a 48 well plate 85.4x127.5mm
 set.seed(1)
 
 plate <- 
-  data.frame(group = c(rep('A', 15),
-                       rep('B', 15),
-                       rep('C', 15))) |>
+  data.frame(group = c(rep('a', 4),
+                       rep('b', 4),
+                       rep('c', 4))) |>
   assignPlatePosition() |>
   blockRandom(x = "group") |> 
   insertSamples(howoften=4,
@@ -142,35 +141,36 @@ rawrr::readChromatogram(EH4547.raw, mass = iRTmz, tol = 10, type = "xic", filter
 https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.html
 
 
-## Example: Reporting using Rpkg proLFQua {.smaller}
+## Example:  Differential abundance analysis {.smaller .build}
 
-```{r proLFQua, warning=FALSE, fig.height=3, fig.width=5, error=TRUE}
-# https://wolski.github.io/prolfqua/
-d <- prolfqua::data_ionstar$filtered()                              # load data
-lfqd <- prolfqua::LFQData$new(d$data, d$config)                     # constructer R6 object 
-lfqt <-  lfqd$get_Transformer()$log2()$robscale()$lfq               # normalize data
-pl <- lfqt$get_Plotter()                                            # get plotter object
-p_1 <- pl$intensity_distribution_density()  + ggplot2::theme(legend.position = "none")
-p_2 <- pl$pca() + ggplot2::theme(legend.position = "none")
-plot.new(); pl$heatmap(); ggpubr::ggarrange(p_1, p_2)
+```{r echo=TRUE, eval=TRUE}
+d <- prolfqua::data_ionstar$filtered()                  # load peptide level data
 ```
+```{r}
+lfqd <- prolfqua::LFQData$new(d$data, d$config)         # create R6 obejct
+```
+```{r}
+lfqt <-  lfqd$get_Transformer()$log2()$robscale()$lfq   # transform intensities
+lfqp <- lfqt$get_Aggregator()$medpolish()               # infer protein intensities from peptide intensities
+```
+```{r}
+models <- prolfqua::build_model(lfqp, prolfqua::strategy_lm( "medpolish ~ dilution."))
 
-```{r echo=FALSE, eval=FALSE}
-library(prolfqua); library(ggplot2)
-d <- prolfqua::data_ionstar$filtered() # load peptide level data
-lfqd <- LFQData$new(d$data, d$config)  # create R6 obejct
-lfqt <-  lfqd$get_Transformer()$log2()$robscale()$lfq # transform intensities
-lfqp <- lfqt$get_Aggregator()$medpolish() # infer protein intensities from peptide intensities
-models <- build_model(lfqp, strategy_lm( "medpolish ~ dilution.") ) # fit model
-contr <- Contrasts$new(models,
-                       c("dilution_(9/7.5)_1.2" =   "dilution.e - dilution.d",
-                         "dilution_(7.5/6)_1.25" =   "dilution.d - dilution.c") ) %>% ContrastsModerated$new() # compute contrasts
+                                                         # fit model
+contr <- prolfqua::Contrasts$new(models,
+     c("b versus a" =   "dilution.b - dilution.a",
+       "c versus b" =   "dilution.c - dilution.b") ) |> 
+  prolfqua::ContrastsModerated$new() # compute contrasts
+```
+source: https://wolski.github.io/prolfqua/
 
+<div class='notes'>
+```{r volcano, fig.height=3, fig.width=5, message=FALSE, warning=FALSE}
 pl <- contr$get_Plotter()
-p1 <- pl$histogram()$p.value
-p2 <- pl$volcano()$FDR + theme(legend.position = "bottom")
-gridExtra::grid.arrange(p1, p2, ncol = 2)
+pl$volcano()$FDR + ggplot2::theme(legend.position = "bottom")
 ```
+</div>
+
 # What have we learned during our own R software development?
 
 ## R packages
