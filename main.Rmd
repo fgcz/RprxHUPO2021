@@ -312,6 +312,15 @@ knitr::include_graphics("pmic13223-fig-0002-m.jpeg")
 - R fits well into concept of distributed & modular analysis workflows
 - R is a good tool for scalable and reproducible data analysis!
 
+## Thanks
+
+- Download: https://github.com/fgcz/RprxHUPO2021
+- Questions (also any time later): https://github.com/fgcz/RprxHUPO2021/issues
+
+```{r ErnieBert, echo=FALSE, out.width="45%", error=TRUE, fig.align='center'}
+knitr::include_graphics("https://cdn-s-www.dna.fr/images/3FF17789-0AEA-4D41-B05E-78FF17D6D36C/NW_detail/title-1544616741.jpg")
+```
+
 
 # Appendix
 
