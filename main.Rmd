@@ -143,30 +143,30 @@ https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.ht
 
 ## Example:  Differential abundance analysis {.smaller .build}
 
-```{r echo=TRUE, eval=TRUE}
-d <- prolfqua::data_ionstar$filtered()                  # load peptide level data
+```{r echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+d <- prolfqua::data_ionstar$filtered()                # load peptide level data
 ```
 ```{r}
-lfqd <- prolfqua::LFQData$new(d$data, d$config)         # create R6 obejct
+lfqd <- prolfqua::LFQData$new(d$data, d$config)       # create R6 obejct
 ```
 ```{r}
-lfqt <-  lfqd$get_Transformer()$log2()$robscale()$lfq   # transform intensities
-lfqp <- lfqt$get_Aggregator()$medpolish()               # infer protein intensities from peptide intensities
+lfqt <-  lfqd$get_Transformer()$log2()$robscale()$lfq # transform intensities
+lfqp <- lfqt$get_Aggregator()$medpolish()             # infer protein intensities from peptide intensities
 ```
+fit model
 ```{r}
 models <- prolfqua::build_model(lfqp, prolfqua::strategy_lm( "medpolish ~ dilution."))
-
-                                                         # fit model
-contr <- prolfqua::Contrasts$new(models,
-     c("b versus a" =   "dilution.b - dilution.a",
-       "c versus b" =   "dilution.c - dilution.b") ) |> 
-  prolfqua::ContrastsModerated$new() # compute contrasts
+# output contains a linear model for each protein
+                               
+contr <- prolfqua::Contrasts$new(models,                
+     c("b versus a" = "dilution.b - dilution.a",
+       "c versus b" = "dilution.c - dilution.b") )     # compute contrasts
 ```
 source: https://wolski.github.io/prolfqua/
 
 <div class='notes'>
-```{r volcano, fig.height=3, fig.width=5, message=FALSE, warning=FALSE}
-pl <- contr$get_Plotter()
+```{r volcano, fig.height=3, fig.width=5}
+pl <- contr$get_Plotter()             # call constructor for plot device
 pl$volcano()$FDR + ggplot2::theme(legend.position = "bottom")
 ```
 </div>
