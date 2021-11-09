@@ -177,7 +177,7 @@ d <- prolfqua::data_ionstar$filtered()                # load peptide level data
 lfqd <- prolfqua::LFQData$new(d$data, d$config)       # create R6 obejct
 ```
 ```{r}
-lfqt <-  lfqd$get_Transformer()$log2()$robscale()$lfq # transform intensities
+lfqt <- lfqd$get_Transformer()$log2()$robscale()$lfq # transform intensities
 lfqp <- lfqt$get_Aggregator()$medpolish()             # infer protein intensities from peptide intensities
 ```
 fit model
