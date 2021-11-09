@@ -85,7 +85,7 @@ LFQ service workflow (includes all tasks listed before)
 
 ## Example: define 48 well {.columns-2 .smaller .build}
 
-for generating an LC-MS instrument queue, e.g., for a 48 well plate 85.4x127.5mm
+for generating an LC-MS instrument queue
 
 ```{r plate, error=TRUE}
 set.seed(1)
