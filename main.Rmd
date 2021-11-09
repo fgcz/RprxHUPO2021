@@ -83,7 +83,7 @@ LFQ service workflow (includes all tasks listed before)
 ![](PictureLFQWorkflow2.png)
 
 
-## Example: define 48 well {.columns-2 .smaller}
+## Example: define 48 well {.columns-2 .smaller .build}
 
 for generating an LC-MS instrument queue, e.g., for a 48 well plate 85.4x127.5mm
 
@@ -100,7 +100,13 @@ plate <-
         stdPosX='6', stdPosY='F', plate=1,
         stdName = "clean",
         volume=2,
-        method="C:\\Xcalibur\\general_clean") 
+        method="C:\\Xcalibur\\general_clean") |>
+  insertSamples(howoften=4,
+        stdPosX='8', stdPosY='F', plate=1,
+        stdName = "autoQC01",
+        volume=1,
+        method="C:\\Xcalibur\\autoQC01") 
+
 
 ```
 
@@ -110,6 +116,24 @@ plate <-
 op <- par(mar=c(4,4,1,1))
   .plotPlate(plate, 'group')
 ```
+
+<div class='notes'>
+```{r formatXCalibur}
+plate$id <- 1:nrow(plate)
+plate |>
+  protViz:::formatXCalibur(path=sprintf("D:\\Data2San\\p%d\\Proteomics\\%s\\%s_%s",
+                                        3000,
+                                        "LTQFT_1",
+                                        "cpanse",
+                                        format(Sys.time(), "%Y%m%d"))) |>
+  head() |>
+  knitr::kable()
+```
+</div>
+
+## A case study - LFQ service workflow {data-background-size=cover}
+
+![](PictureLFQWorkflow2.png)
 
 ## Example: XIC for iRT peptide precursors {.smaller}
 
@@ -140,6 +164,9 @@ rawrr::readChromatogram(EH4547.raw, mass = iRTmz, tol = 10, type = "xic", filter
 
 https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.html
 
+## A case study - LFQ service workflow {data-background-size=cover}
+
+![](PictureLFQWorkflow2.png)
 
 ## Example:  Differential abundance analysis {.smaller .build}
 
@@ -160,13 +187,13 @@ models <- prolfqua::build_model(lfqp, prolfqua::strategy_lm( "medpolish ~ diluti
                                
 contr <- prolfqua::Contrasts$new(models,                
      c("b versus a" = "dilution.b - dilution.a",
-       "c versus b" = "dilution.c - dilution.b") )     # compute contrasts
+       "c versus b" = "dilution.c - dilution.b") )  # compute contrasts
 ```
 source: https://wolski.github.io/prolfqua/
 
 <div class='notes'>
 ```{r volcano, fig.height=3, fig.width=5}
-pl <- contr$get_Plotter()             # call constructor for plot device
+pl <- contr$get_Plotter() # call constructor for plot device
 pl$volcano()$FDR + ggplot2::theme(legend.position = "bottom")
 ```
 </div>
