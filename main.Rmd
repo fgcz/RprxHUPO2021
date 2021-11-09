@@ -51,7 +51,7 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 
 # How do we apply R for compMS?
 
-## How we use R
+## How we use R?
 
 ### Tasks
 
