@@ -265,11 +265,14 @@ knitr::include_graphics("RforMSlogo.png")
 
 https://www.rformassspectrometry.org/
 
-***
 
-```{r ecosystem, echo=FALSE, out.width="100%", error=TRUE}
+<div class='note'>
+```{r ecosystem, echo=FALSE, out.width="90%", error=TRUE}
 knitr::include_graphics("ecosystem.jpeg")
 ```
+
+ by courtesy of Johannes Rainer
+</div>
 
 # Which role will R play in the future compMS landscape?
 
