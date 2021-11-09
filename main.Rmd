@@ -66,7 +66,7 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 * Interactive web applications (Shiny) connected to our core LIMS system
 * Scripts are running on HPC cluster as parts of analysis pipelines
 
-## Why we like R... in general 
+## Why we like R... in general?
 
 > - R is free and open-source
 > - R provides an active and engaged community (ask questions, find support)
@@ -106,8 +106,6 @@ plate <-
         stdName = "autoQC01",
         volume=1,
         method="C:\\Xcalibur\\autoQC01") 
-
-
 ```
 
 <p class="forceBreak"></p>
@@ -158,11 +156,37 @@ names(iRTmz) <- c("LGGNEQVTR", "YILAGVENSK", "GTFIIDPGGVIR", "GTFIIDPAAVIR", "GA
 ```
 
 ```{r xic, error=TRUE, fig.width=10, fig.height=4, echo=TRUE, message=FALSE, warning=FALSE}
-rawrr::readChromatogram(EH4547.raw, mass = iRTmz, tol = 10, type = "xic", filter = "ms") |> 
+(XIC <- 
+  rawrr::readChromatogram(EH4547.raw, mass = iRTmz, tol = 10, type = "xic", filter = "ms")) |> 
   plot(diagnostic = TRUE)
 ```
 
 https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.html
+
+<div class='notes'>
+```{r autoQC01lm}
+iRTscore <- c(-24.92, 19.79, 70.52, 87.23, 0, 28.71, 12.39, 33.38,
+              42.26, 54.62, 100)
+rt <- sapply(XIC, function(x) x$times[which.max(x$intensities)[1]])
+fit <- lm(rt ~ iRTscore)
+```
+
+```{r autoQC01lmPlot,  fig.height=5, fig.width=5, echo=FALSE}
+plot(rt ~ iRTscore,
+     ylab = 'Retention time [min]',
+     xlab = "iRT score",
+     pch=16,frame.plot = FALSE)
+abline(fit, col = 'grey')
+abline(v = 0, col = "grey", lty = 2)
+legend("topleft", legend = paste("Regression line: ", "rt =",
+                                 format(coef(fit)[1], digits = 4), " + ",
+                                 format(coef(fit)[2], digits = 2), "score",
+                                 "\nR2: ", format(summary(fit)$r.squared, digits = 2)),
+       bty = "n", cex = 0.75)
+text(iRTscore, rt, iRTmz, pos=1,cex=0.5)
+
+```
+</div>
 
 ## A case study - LFQ service workflow {data-background-size=cover}
 
