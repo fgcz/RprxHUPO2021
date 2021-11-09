@@ -312,51 +312,18 @@ knitr::include_graphics("pmic13223-fig-0002-m.jpeg")
 - R fits well into concept of distributed & modular analysis workflows
 - R is a good tool for scalable and reproducible data analysis!
 
-## Thanks
+## Thanks you!
 
 - Download: https://github.com/fgcz/RprxHUPO2021
+
 - Questions (also any time later): https://github.com/fgcz/RprxHUPO2021/issues
 
-```{r ErnieBert, echo=FALSE, out.width="45%", error=TRUE, fig.align='center'}
+<div class='note'>
+```{r ErnieBert, echo=FALSE, out.width="65%", error=TRUE, fig.align='center'}
 knitr::include_graphics("https://cdn-s-www.dna.fr/images/3FF17789-0AEA-4D41-B05E-78FF17D6D36C/NW_detail/title-1544616741.jpg")
 ```
-
-
-# Appendix
-
-## FGCZ Orbitrap run statistics
-
-```{r numberRuns, fig.retina=3, echo=FALSE}
-S <- data.frame(year = c(2012:2020),
-           all = c(12295, 15982, 15190, 16726, 19251, 24588, 28814, 30531, 27176),
-           clean = c(881, 1788, 1700,  2228, 2121, 2965, 4097, 6677, 6529),
-           qc = c(1952,  3326, 2542,2821, 4027, 4435, 5640, 5247, 3761))
-plot(all ~ year, data=S, pch=16, type='b', lwd=2, ylim=c(0,max(S$all)), xlim=c(2012,2020), ylab='number of runs'); lines(S$qc ~ S$year,type='b', col='red'); lines(S$clean ~ S$year,type='b', col='green'); legend("topleft", c('all', 'qc', 'clean'), pch=16, col=c('black', 'red', 'green')); box(); lines(S$all-(S$qc +S$clean) ~ S$year,type='b', col='blue');
-```
-
-15 Orbitrap LC-MS systems (Proteomics & Metabolomics)
-
-<div class='notes'>
-|year  |  2012|  2013|  2014|  2015|  2016|  2017|  2018|  2019|  2020| 2021|
-|:-----|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|----:|
-|all   | 12295| 15982| 15190| 16726| 19251| 24588| 28814| 30531| 27176| 6261|
-|clean |   881|  1788|  1700|  2228|  2121|  2965|  4097|  6677|  6529| 1449|
-|qc    |  1952|  3326|  2542|  2821|  4027|  4435|  5640|  5247|  3761|  820|
-
 </div>
 
-
-## R proteomics packages
-
-### CRAN
-
-https://CRAN.R-project.org/package=opentimsr 
-https://CRAN.R-project.org/package=protViz
- 
-### Bioconductor
-
-https://bioconductor.org/packages/release/BiocViews.html#___Proteomics
- 
 ## Session information {.smaller}
 
 ```{r sessioninfo, echo=FALSE}
