@@ -317,7 +317,7 @@ knitr::include_graphics("pmic13223-fig-0002-m.jpeg")
 
 ## Thank you!
 
-- Download: https://github.com/fgcz/RprxHUPO2021
+- Download the source code: https://github.com/fgcz/RprxHUPO2021
 
 - Questions (also any time later): https://github.com/fgcz/RprxHUPO2021/issues
 
