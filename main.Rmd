@@ -24,7 +24,7 @@ library(protViz)
 
 ### Key aspects
 
-* How do we apply R for computational MS (compMS)?
+* How do we apply R for proteomics (computational MS)?
 * What have we learned during our own R software development projects?
 * Which role will R play in the future compMS landscape?
 
