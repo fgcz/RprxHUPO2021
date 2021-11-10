@@ -285,7 +285,7 @@ knitr::include_graphics("IntroductionToMachineLearningWithR.jpeg")
 knitr::include_graphics("pMLinR.jpg")
 ```
 
-## Closer collaboration of Python and R in proteomics?
+## Closer collaboration of Python and R in proteomics? {.smaller}
 
 - Many Data Science teams today are bilingual and some even sense a R & Python love story.
 - It becomes common to have mixed code, shared environments ([reticulate](https://rstudio.github.io/reticulate/?_ga=2.198172463.1830294086.1636107730-57468228.1602754776))
