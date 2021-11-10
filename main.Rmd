@@ -230,13 +230,13 @@ pl$volcano()$FDR + ggplot2::theme(legend.position = "bottom")
 
 ## R packages
 
-- [protViz](https://cran.r-project.org/package=protViz) ~10yrs on CRAN mainly used for training and teaching
+- [protViz](https://cran.r-project.org/package=protViz) CRAN
 - [rawDiag](https://github.com/fgcz/rawDiag) only GitHub (source + releases)
 - [rawrr](https://bioconductor.org/packages/release/bioc/html/rawrr.html) BioC 3.14 Software package
 - [MsBackendRawFileReader](https://bioconductor.org/packages/release/bioc/html/MsBackendRawFileReader.html) BioC 3.14 Software package
 - [tartare](https://bioconductor.org/packages/release/data/experiment/html/tartare.html) BioC 3.14 ExpHub package
 - [proLFQua](https://github.com/wolski/prolfqua) only GitHub (source + releases)
-- [bfabric](https://fgcz-bfabric.uzh.ch) closed source internal package for connecting to our data management system via REST/SOAP
+- [bfabric](https://fgcz-bfabric.uzh.ch) private package
 
 ## FAIR principles for research software written in R {.smaller}
 
@@ -269,12 +269,12 @@ knitr::include_graphics("RforMSlogo.png")
 
 https://www.rformassspectrometry.org/
 
+***
 
-<div class='note'>
 ```{r ecosystem, echo=FALSE, out.width="90%", error=TRUE}
 knitr::include_graphics("ecosystem.jpeg")
 ```
-
+<div class='note'>
  by courtesy of Johannes Rainer
 </div>
 
