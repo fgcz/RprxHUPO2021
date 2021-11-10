@@ -226,7 +226,7 @@ pl$volcano()$FDR + ggplot2::theme(legend.position = "bottom")
 
 ## R packages
 
-- [protViz](https://cran.r-project.org/package=protViz) ~10yrs on CRAN mainly used for training and teaching
+- [protViz](https://cran.r-project.org/package=protViz) CRAN
 - [rawDiag](https://github.com/fgcz/rawDiag) only GitHub (source + releases)
 - [rawrr](https://bioconductor.org/packages/release/bioc/html/rawrr.html) BioC 3.14 Software package
 - [MsBackendRawFileReader](https://bioconductor.org/packages/release/bioc/html/MsBackendRawFileReader.html) BioC 3.14 Software package
