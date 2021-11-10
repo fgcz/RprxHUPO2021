@@ -116,7 +116,7 @@ op <- par(mar=c(4,4,1,1))
 ```
 </div>
 
-## Task 1: continued
+## Task 1: continued {.smaller}
 
 ```{r formatXCalibur}
 plate$id <- 1:nrow(plate)
