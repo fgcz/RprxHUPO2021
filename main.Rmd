@@ -83,7 +83,7 @@ LFQ service workflow (includes all tasks listed before)
 ![](PictureLFQWorkflow2.png)
 
 
-## Task 1 : Generation of sample queues (mode 1){.smaller}
+## Task 1: Generation of sample queues (mode 1){.smaller}
 
 
 ```{r plate, error=TRUE}
@@ -114,7 +114,8 @@ op <- par(mar=c(4,4,1,1))
   .plotPlate(plate, 'group')
 ```
 </div>
-## Task 1: write to file for instrumet control software {.smaller}
+
+## Task 1: Write to file for instrumet control software {.smaller}
 
 ```{r formatXCalibur}
 plate$id <- 1:nrow(plate)
@@ -129,7 +130,7 @@ plate |>
 ```
 </div>
 
-## Task 2. A case study - LFQ service workflow (mode 2) {data-background-size=cover}
+## Task 2: System suitability/quality control (mode 2) {data-background-size=cover}
 
 ![](PictureLFQWorkflow2.png)
 
@@ -192,12 +193,12 @@ text(iRTscore, rt, iRTmz, pos=1,cex=0.5)
 output (shown on dash board)[http://fgcz-ms.uzh.ch/~cpanse/autoQC01.html]
 </div>
 
-## A case study - LFQ service workflow {data-background-size=cover}
+## Task 3: Differential protein abundance analysis  {data-background-size=cover}
 
 ![](PictureLFQWorkflow2.png)
 
 
-## Task 3:  Differential protein abundance analysis {.smaller .build}
+## Task 3: Differential protein abundance analysis {.smaller .build}
 
 ```{r data_ionstar,echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE, error=TRUE}
 d <- prolfqua::data_ionstar$filtered()                # load peptide level data
@@ -225,6 +226,14 @@ pl <- contr$get_Plotter() # call constructor for plot device
 pl$volcano()$FDR + ggplot2::theme(legend.position = "bottom")
 ```
 </div>
+
+## Tasks
+
+1. Generation of sample queues
+2. System suitability/quality control
+3. **LC-MS method optimization**
+4. Differential protein abundance analysis
+5. **Reporting**
 
 # What have we learned during our own R software development?
 
