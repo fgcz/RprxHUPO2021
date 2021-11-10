@@ -207,16 +207,13 @@ pl$volcano()$FDR + ggplot2::theme(legend.position = "bottom")
 ```
 </div>
 
-## Tasks
-
-![](PictureLFQWorkflow2.png)
-
+## Solutions we skip in the interest of time
 
 1. Generation of sample queues
 2. System suitability/quality control
-3. **LC-MS method optimization**
+3. **LC-MS method optimization => rawDiag**
 4. Differential protein abundance analysis
-5. **Reporting**
+5. **Reporting => Rmarkdown**
 
 # What have we learned during our own R software development?
 
