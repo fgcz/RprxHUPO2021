@@ -49,7 +49,7 @@ We offer/support analytical services, training, collaborative R&D in:
 
 Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer TOFs. 
 
-# How do we apply R for compMS?
+# How do we apply R for proteomics?
 
 ## How we use R?
 
@@ -278,7 +278,7 @@ knitr::include_graphics("ecosystem.jpeg")
  by courtesy of Johannes Rainer
 </div>
 
-# Which role will R play in the future compMS landscape?
+# Which role will R play in the future proteomics landscape?
 
 ## The rise of machine learning
 
@@ -293,7 +293,7 @@ knitr::include_graphics("IntroductionToMachineLearningWithR.jpeg")
 knitr::include_graphics("pMLinR.jpg")
 ```
 
-## Closer collaboration of Python and R in compMS?
+## Closer collaboration of Python and R in proteomics?
 
 - Many Data Science teams today are bilingual and some even sense a R & Python love story.
 - It becomes common to have mixed code, shared environments ([reticulate](https://rstudio.github.io/reticulate/?_ga=2.198172463.1830294086.1636107730-57468228.1602754776))
