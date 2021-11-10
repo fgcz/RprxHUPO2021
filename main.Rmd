@@ -194,18 +194,18 @@ text(iRTscore, rt, iRTmz, pos=1,cex=0.5)
 
 ## Example:  Differential abundance analysis {.smaller .build}
 
-```{r echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+```{r data_ionstar,echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE, error=TRUE}
 d <- prolfqua::data_ionstar$filtered()                # load peptide level data
 ```
-```{r}
+```{r createR6, error=TRUE}
 lfqd <- prolfqua::LFQData$new(d$data, d$config)       # create R6 obejct
 ```
-```{r}
+```{r transform, error=TRUE}
 lfqt <- lfqd$get_Transformer()$log2()$robscale()$lfq # transform intensities
 lfqp <- lfqt$get_Aggregator()$medpolish()             # infer protein intensities from peptide intensities
 ```
 fit model
-```{r}
+```{r models, error=TRUE}
 models <- prolfqua::build_model(lfqp, prolfqua::strategy_lm( "medpolish ~ dilution."))
 # output contains a linear model for each protein
                                
@@ -216,7 +216,7 @@ contr <- prolfqua::Contrasts$new(models,
 source: https://wolski.github.io/prolfqua/
 
 <div class='notes'>
-```{r volcano, fig.height=3, fig.width=5}
+```{r volcano, fig.height=3, fig.width=5, error=TRUE}
 pl <- contr$get_Plotter() # call constructor for plot device
 pl$volcano()$FDR + ggplot2::theme(legend.position = "bottom")
 ```
