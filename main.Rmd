@@ -2,7 +2,7 @@
 title: "Proteomics in R"
 subtitle: "HUPO 2021 Reconnect Bioinformatics Hub, Session #5b"
 author: "Christian Panse <cp@fgz.ethz.ch> & Tobias Kockmann <tobias.kockmann@fgcz.ethz.ch>"
-date: "Thursday, November 11, 2021, 11:30 – 12:00"
+date: "Thursday, November 11, 2021, 11:30 – 12:00 UTC"
 output:
   ioslides_presentation:
     widescreen: yes
