@@ -22,7 +22,26 @@
   text(x$x, y0, 1:nrow(x))
 }
 
+#```{r EH4547.raw, error=TRUE, message = FALSE, warning = FALSE, echo = FALSE}
+## fetch raw file using ExperimentHub
+## data is part of tartare package
+## https://bioconductor.org/packages/3.14/data/experiment/html/tartare.html
+library(ExperimentHub)
+eh <- ExperimentHub::ExperimentHub()
+EH4547 <- normalizePath(eh[["EH4547"]])
 
+EH4547.raw <- paste0(EH4547, ".raw")
+
+if (!file.exists(EH4547.raw)){
+  file.copy(EH4547, EH4547.raw)
+}
+
+iRTmz <- c(487.2571, 547.2984, 622.8539, 636.8695, 644.8230, 669.8384, 683.8282,
+           683.8541, 699.3388, 726.8361, 776.9301)
+names(iRTmz) <- c("LGGNEQVTR", "YILAGVENSK", "GTFIIDPGGVIR", "GTFIIDPAAVIR", "GAGSSEPVTGLDAK",
+                  "TPVISGGPYEYR", "VEATFGVDESNAK", "TPVITGAPYEYR", "DGLDAASYYAPVR", "ADVTPADFSEWSK", "LFLQFGAQGSPFLK")
+
+#````
 dump <- function(){
 iris |>
 head(48 + 48 - 3) |>
