@@ -75,6 +75,7 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 
 1. Interactive web applications (Shiny) connected to our core LIMS system 
 2. Scripts are running on HPC cluster as parts of analysis pipelines 
+3. R console
 </div>
 <br>
 
@@ -84,7 +85,7 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 
 
 
-## Task 1: Generation of sample queues (mode 1){.smaller}
+## Task 1: Generation of sample queues {.smaller}
 
 ```{r plate, error=TRUE}
 set.seed(1)
@@ -130,9 +131,9 @@ plate |>
 ```
 </div>
 
-## Task 2: System suitability/quality control (mode 2) {.smaller}
-XIC for iRT peptide precursors 
+## Task 2: System suitability/quality control {.smaller}
 
+XIC for iRT peptide precursors 
 ```{r xic, error=TRUE, fig.width=10, fig.height=4, echo=TRUE, message=FALSE, warning=FALSE}
 # stage QC raw data from SAN
 (XIC <- 
@@ -170,6 +171,7 @@ output (shown on dash board)[http://fgcz-ms.uzh.ch/~cpanse/autoQC01.html]
 </div>
 
 ## Task 3: Differential protein abundance analysis {.smaller .build}
+
 
 ```{r data_ionstar,echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE, error=TRUE}
 d <- prolfqua::data_ionstar$filtered()                # load peptide level data
