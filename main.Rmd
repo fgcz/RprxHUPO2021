@@ -55,16 +55,16 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 
 ### Tasks
 
-* Generation of sample queues
-* System suitability/quality control
-* LC-MS method optimization (rawDiag)
-* Statisical analysis (MSstats, proLFQua, TPP, ...)
-* Reporting (Rmarkdown)
+1. Generation of sample queues
+2. System suitability/quality control
+3. LC-MS method optimization
+4. Differential protein abundance analysis
+5. Reporting 
 
 ### Modes
 
-* Interactive web applications (Shiny) connected to our core LIMS system
-* Scripts are running on HPC cluster as parts of analysis pipelines
+1. Interactive web applications (Shiny) connected to our core LIMS system 
+2. Scripts are running on HPC cluster as parts of analysis pipelines 
 
 ## Why we like R... in general?
 
@@ -83,13 +83,12 @@ LFQ service workflow (includes all tasks listed before)
 ![](PictureLFQWorkflow2.png)
 
 
-## Example: define 48 well {.columns-2 .smaller .build}
+## Task 1 : Generation of sample queues (mode 1){.smaller}
 
-for generating an LC-MS instrument queue
 
 ```{r plate, error=TRUE}
 set.seed(1)
-
+# query bfabric for sample metadata
 plate <- 
   data.frame(group = c(rep('a', 4),
                        rep('b', 4),
@@ -108,14 +107,15 @@ plate <-
         method="C:\\Xcalibur\\autoQC01") 
 ```
 
-<p class="forceBreak"></p>
+<div class='note'>
 
 ```{r plotPlate, fig.width=4.5, fig.height=5, echo=FALSE}
 op <- par(mar=c(4,4,1,1))
   .plotPlate(plate, 'group')
 ```
+</div>
+## Task 1: write to file for instrumet control software {.smaller}
 
-<div class='notes'>
 ```{r formatXCalibur}
 plate$id <- 1:nrow(plate)
 plate |>
@@ -129,11 +129,12 @@ plate |>
 ```
 </div>
 
-## A case study - LFQ service workflow {data-background-size=cover}
+## Task 2. A case study - LFQ service workflow (mode 2) {data-background-size=cover}
 
 ![](PictureLFQWorkflow2.png)
 
-## Example: XIC for iRT peptide precursors {.smaller}
+## Task 2: System suitability/quality control (mode 2) {.smaller}
+XIC for iRT peptide precursors 
 
 ```{r EH4547.raw, error=TRUE, message = FALSE, warning = FALSE, echo = FALSE}
 ## fetch raw file using ExperimentHub
@@ -156,6 +157,7 @@ names(iRTmz) <- c("LGGNEQVTR", "YILAGVENSK", "GTFIIDPGGVIR", "GTFIIDPAAVIR", "GA
 ```
 
 ```{r xic, error=TRUE, fig.width=10, fig.height=4, echo=TRUE, message=FALSE, warning=FALSE}
+# stage QC raw data from SAN
 (XIC <- 
   rawrr::readChromatogram(EH4547.raw, mass = iRTmz, tol = 10, type = "xic", filter = "ms")) |> 
   plot(diagnostic = TRUE)
@@ -186,13 +188,16 @@ legend("topleft", legend = paste("Regression line: ", "rt =",
 text(iRTscore, rt, iRTmz, pos=1,cex=0.5)
 
 ```
+
+output (shown on dash board)[http://fgcz-ms.uzh.ch/~cpanse/autoQC01.html]
 </div>
 
 ## A case study - LFQ service workflow {data-background-size=cover}
 
 ![](PictureLFQWorkflow2.png)
 
-## Example:  Differential abundance analysis {.smaller .build}
+
+## Task 3:  Differential protein abundance analysis {.smaller .build}
 
 ```{r data_ionstar,echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE, error=TRUE}
 d <- prolfqua::data_ionstar$filtered()                # load peptide level data
@@ -213,7 +218,6 @@ contr <- prolfqua::Contrasts$new(models,
      c("b versus a" = "dilution.b - dilution.a",
        "c versus b" = "dilution.c - dilution.b") )  # compute contrasts
 ```
-source: https://wolski.github.io/prolfqua/
 
 <div class='notes'>
 ```{r volcano, fig.height=3, fig.width=5, error=TRUE}
@@ -231,7 +235,7 @@ pl$volcano()$FDR + ggplot2::theme(legend.position = "bottom")
 - [rawrr](https://bioconductor.org/packages/release/bioc/html/rawrr.html) BioC 3.14 Software package
 - [MsBackendRawFileReader](https://bioconductor.org/packages/release/bioc/html/MsBackendRawFileReader.html) BioC 3.14 Software package
 - [tartare](https://bioconductor.org/packages/release/data/experiment/html/tartare.html) BioC 3.14 ExpHub package
-- [proLFQua](https://github.com/wolski/prolfqua) only GitHub (source + releases)
+- [proLFQua](https://github.com/fgcz/prolfqua) only GitHub (source + releases)
 - [bfabric](https://fgcz-bfabric.uzh.ch) private package
 
 ## FAIR principles for research software written in R {.smaller}
@@ -314,6 +318,12 @@ knitr::include_graphics("pmic13223-fig-0002-m.jpeg")
 
 - R fits well into concept of distributed & modular analysis workflows
 - R is a good tool for scalable and reproducible data analysis!
+
+<div class='note'>
+```{r pmic13223-fig-0002-m , echo=FALSE, out.height="100%", error=TRUE, fig.align='center'}
+knitr::include_graphics("pmic13223-fig-0002-m.jpeg")
+```
+</div>
 
 ## Thank you!
 
