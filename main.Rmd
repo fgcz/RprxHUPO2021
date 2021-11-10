@@ -232,7 +232,7 @@ pl$volcano()$FDR + ggplot2::theme(legend.position = "bottom")
 - [MsBackendRawFileReader](https://bioconductor.org/packages/release/bioc/html/MsBackendRawFileReader.html) BioC 3.14 Software package
 - [tartare](https://bioconductor.org/packages/release/data/experiment/html/tartare.html) BioC 3.14 ExpHub package
 - [proLFQua](https://github.com/wolski/prolfqua) only GitHub (source + releases)
-- [bfabric](https://fgcz-bfabric.uzh.ch) closed source internal package for connecting to our data management system via REST/SOAP
+- [bfabric](https://fgcz-bfabric.uzh.ch) private package
 
 ## FAIR principles for research software written in R {.smaller}
 
