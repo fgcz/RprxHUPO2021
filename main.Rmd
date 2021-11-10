@@ -57,9 +57,9 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 
 1. Generation of sample queues
 2. System suitability/quality control
-3. LC-MS method optimization (rawDiag)
-4. Statisical analysis (MSstats, proLFQua, TPP, ...)
-5. Reporting (Rmarkdown)
+3. LC-MS method optimization
+4. Differential protein abundance analysis
+5. Reporting 
 
 ### Modes
 
@@ -196,7 +196,8 @@ output (shown on dash board)[http://fgcz-ms.uzh.ch/~cpanse/autoQC01.html]
 
 ![](PictureLFQWorkflow2.png)
 
-## Example:  Differential abundance analysis {.smaller .build}
+
+## Task 3:  Differential protein abundance analysis {.smaller .build}
 
 ```{r data_ionstar,echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE, error=TRUE}
 d <- prolfqua::data_ionstar$filtered()                # load peptide level data
@@ -217,7 +218,6 @@ contr <- prolfqua::Contrasts$new(models,
      c("b versus a" = "dilution.b - dilution.a",
        "c versus b" = "dilution.c - dilution.b") )  # compute contrasts
 ```
-source: https://wolski.github.io/prolfqua/
 
 <div class='notes'>
 ```{r volcano, fig.height=3, fig.width=5, error=TRUE}
@@ -235,7 +235,7 @@ pl$volcano()$FDR + ggplot2::theme(legend.position = "bottom")
 - [rawrr](https://bioconductor.org/packages/release/bioc/html/rawrr.html) BioC 3.14 Software package
 - [MsBackendRawFileReader](https://bioconductor.org/packages/release/bioc/html/MsBackendRawFileReader.html) BioC 3.14 Software package
 - [tartare](https://bioconductor.org/packages/release/data/experiment/html/tartare.html) BioC 3.14 ExpHub package
-- [proLFQua](https://github.com/wolski/prolfqua) only GitHub (source + releases)
+- [proLFQua](https://github.com/fgcz/prolfqua) only GitHub (source + releases)
 - [bfabric](https://fgcz-bfabric.uzh.ch) private package
 
 ## FAIR principles for research software written in R {.smaller}
@@ -318,6 +318,12 @@ knitr::include_graphics("pmic13223-fig-0002-m.jpeg")
 
 - R fits well into concept of distributed & modular analysis workflows
 - R is a good tool for scalable and reproducible data analysis!
+
+<div class='note'>
+```{r pmic13223-fig-0002-m , echo=FALSE, out.height="100%", error=TRUE, fig.align='center'}
+knitr::include_graphics("pmic13223-fig-0002-m.jpeg")
+```
+</div>
 
 ## Thank you!
 
