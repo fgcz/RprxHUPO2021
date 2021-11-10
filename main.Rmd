@@ -51,8 +51,18 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 
 # How do we apply R for proteomics?
 
-## How we use R?
+## Why we like R... in general?
 
+> - R is free and open-source
+> - R provides an active and engaged community (ask questions, find support)
+> - R code development is fast
+> - R code runs on all major hardware platforms (incl. HPC clusters and MC computing)
+> - R has become the go-to language for statistical modeling/Data Science
+> - R provides powerful graphical frameworks for data visualization
+> - A bit of personal history ;-)
+
+## How we use R? {.smaller}
+<div class="columns-2">
 ### Tasks
 
 1. Generation of sample queues
@@ -65,26 +75,16 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 
 1. Interactive web applications (Shiny) connected to our core LIMS system 
 2. Scripts are running on HPC cluster as parts of analysis pipelines 
+</div>
+<br>
 
-## Why we like R... in general?
-
-> - R is free and open-source
-> - R provides an active and engaged community (ask questions, find support)
-> - R code development is fast
-> - R code runs on all major hardware platforms (incl. HPC clusters and MC computing)
-> - R has become the go-to language for statistical modeling/Data Science
-> - R provides powerful graphical frameworks for data visualization
-> - A bit of personal history ;-)
-
-## A case study {data-background-size=cover}
-
-LFQ service workflow (includes all tasks listed before)
+### A case study - LFQ serive workflow
 
 ![](PictureLFQWorkflow2.png)
 
 
-## Task 1: Generation of sample queues (mode 1){.smaller}
 
+## Task 1: Generation of sample queues (mode 1){.smaller}
 
 ```{r plate, error=TRUE}
 set.seed(1)
@@ -115,7 +115,7 @@ op <- par(mar=c(4,4,1,1))
 ```
 </div>
 
-## Task 1: Write to file for instrument control software {.smaller}
+## Task 1: continued
 
 ```{r formatXCalibur}
 plate$id <- 1:nrow(plate)
@@ -129,10 +129,6 @@ plate |>
   knitr::kable()
 ```
 </div>
-
-## Task 2: System suitability/quality control (mode 2) {data-background-size=cover}
-
-![](PictureLFQWorkflow2.png)
 
 ## Task 2: System suitability/quality control (mode 2) {.smaller}
 XIC for iRT peptide precursors 
@@ -172,11 +168,6 @@ text(iRTscore, rt, iRTmz, pos=1,cex=0.5)
 
 output (shown on dash board)[http://fgcz-ms.uzh.ch/~cpanse/autoQC01.html]
 </div>
-
-## Task 3: Differential protein abundance analysis  {data-background-size=cover}
-
-![](PictureLFQWorkflow2.png)
-
 
 ## Task 3: Differential protein abundance analysis {.smaller .build}
 
@@ -251,7 +242,7 @@ Develop and release your R code as BioC software package:
 - Write packages that solve specific & well defined tasks and connect them in package ecosystems (prime example: [tidyverse](https://www.tidyverse.org/)).
 - ~~Monolytic packages that try to solve everything.~~
 
-
+<br>
 ```{r RforMSlogo, echo=FALSE, out.width="20%", error=TRUE}
 knitr::include_graphics("RforMSlogo.png")
 ```
