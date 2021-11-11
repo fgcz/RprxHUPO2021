@@ -53,13 +53,13 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 
 ## Why we like R... in general?
 
-> - R is free and open-source
-> - R provides an active and engaged community (ask questions, find support)
-> - R code development is fast
-> - R code runs on all major hardware platforms (incl. HPC clusters and MC computing)
-> - R has become the go-to language for statistical modeling/Data Science
-> - R provides powerful graphical frameworks for data visualization
-> - A bit of personal history ;-)
+> * R is free and open-source
+> * R provides an active and engaged community (ask questions, find support)
+> * R code development is fast
+> * R code runs on all major hardware platforms (incl. HPC clusters and MC computing)
+> * R has become the go-to language for statistical modeling/Data Science
+> * R provides powerful graphical frameworks for data visualization
+> * A bit of personal history ;-)
 
 ## How we use R? {.smaller}
 <div class="columns-2">
@@ -85,26 +85,22 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 
 
 
-## Task 1: Generation of sample queues {.smaller}
+## Task 1: Generation of sample queues
 
 ```{r plate, error=TRUE}
 set.seed(1)
 # query bfabric for sample metadata
 plate <- 
-  data.frame(group = c(rep('a', 4),
-                       rep('b', 4),
-                       rep('c', 4))) |>
+  data.frame(group = c(rep('a', 4), rep('b', 4), rep('c', 4))) |>  # define a sample
   assignPlatePosition() |>
   blockRandom(x = "group") |> 
-  insertSamples(howoften=4,
+  insertSamples(stdName = "clean", 
+        howoften=4, volume=2,
         stdPosX='6', stdPosY='F', plate=1,
-        stdName = "clean",
-        volume=2,
         method="C:\\Xcalibur\\general_clean") |>
-  insertSamples(howoften=4,
+  insertSamples(stdName = "autoQC01", 
+        howoften=4, volume=1,
         stdPosX='8', stdPosY='F', plate=1,
-        stdName = "autoQC01",
-        volume=1,
         method="C:\\Xcalibur\\autoQC01") 
 ```
 
@@ -133,7 +129,7 @@ plate |>
 
 ## Task 2: System suitability/quality control {.smaller}
 
-XIC for iRT peptide precursors 
+XIC for iRT peptide precursors using [rawrr](https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.html)
 ```{r xic, error=TRUE, fig.width=10, fig.height=4, echo=TRUE, message=FALSE, warning=FALSE}
 # stage QC raw data from SAN
 (XIC <- 
@@ -141,7 +137,6 @@ XIC for iRT peptide precursors
   plot(diagnostic = TRUE)
 ```
 
-https://bioconductor.org/packages/release/bioc/vignettes/rawrr/inst/doc/rawrr.html
 
 <div class='notes'>
 ```{r autoQC01lm}
@@ -167,21 +162,20 @@ text(iRTscore, rt, iRTmz, pos=1,cex=0.5)
 
 ```
 
-output (shown on dash board)[http://fgcz-ms.uzh.ch/~cpanse/autoQC01.html]
+output [shown on dash board](http://fgcz-ms.uzh.ch/~cpanse/autoQC01.html)
 </div>
 
 ## Task 3: Differential protein abundance analysis {.smaller .build}
 
-
 ```{r data_ionstar,echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE, error=TRUE}
-d <- prolfqua::data_ionstar$filtered()                # load peptide level data
+d <- prolfqua::data_ionstar$filtered()               # load peptide level data
 ```
 ```{r createR6, error=TRUE}
-lfqd <- prolfqua::LFQData$new(d$data, d$config)       # create R6 obejct
+lfqd <- prolfqua::LFQData$new(d$data, d$config)      # create R6 obejct
 ```
 ```{r transform, error=TRUE}
 lfqt <- lfqd$get_Transformer()$log2()$robscale()$lfq # transform intensities
-lfqp <- lfqt$get_Aggregator()$medpolish()             # infer protein intensities from peptide intensities
+lfqp <- lfqt$get_Aggregator()$medpolish()            # infer protein intensities from peptide intensities
 ```
 fit model
 ```{r models, error=TRUE}
@@ -192,6 +186,7 @@ contr <- prolfqua::Contrasts$new(models,
      c("b versus a" = "dilution.b - dilution.a",
        "c versus b" = "dilution.c - dilution.b") )  # compute contrasts
 ```
+code snippets by Witold E. Wolski
 
 <div class='notes'>
 ```{r volcano, fig.height=3, fig.width=5, error=TRUE}
@@ -314,9 +309,11 @@ knitr::include_graphics("pmic13223-fig-0002-m.jpeg")
 - Questions (also any time later): https://github.com/fgcz/RprxHUPO2021/issues
 
 <div class='note'>
-```{r ErnieBert, echo=FALSE, out.width="65%", error=TRUE, fig.align='center'}
-knitr::include_graphics("https://cdn-s-www.dna.fr/images/3FF17789-0AEA-4D41-B05E-78FF17D6D36C/NW_detail/title-1544616741.jpg")
+
+```{r ErnieBert, echo=FALSE, out.width="100%", error=TRUE, fig.align='center'}
+knitr::include_graphics("/Users/cp/Desktop/20211026-prx-Ziegelhuette.jpg")
 ```
+`staffproteomics@fgcz.ethz.ch`
 </div>
 
 ## Session information {.smaller}
