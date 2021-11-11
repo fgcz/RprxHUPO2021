@@ -22,7 +22,3 @@ Mathias Wilhelm, Cheng Chang
 Tim Van Den Bossche, Veit Schwammle, Viktoria Dorfer
 11:30 – 12:00: Session #5b Tutorial: Proteomics in R
 Christian Panse, Tobias Kockmann
-
-Note from Eric by email:
-
-As I mentioned in previous emails, the goal is to foster discussion rather than just presentation. Your tutorials idea is fine, but weaving in some opportunities for discussion would be highly appreciated, rather than a passive session. Perhaps facilitate some discussion about needs and future directions.
