@@ -88,20 +88,22 @@ Proteomics currently operates ~12 MS (mostly LC-ESI-MS). Many Orbitraps, fewer T
 ## Task 1: Generation of sample queues
 
 ```{r plate, error=TRUE}
+# sample <- bfabric::read(login, webservicepassword,
+#         endpoint = 'sample',
+#         query = list(id = 206577))
 set.seed(1)
-# query bfabric for sample metadata
 plate <- 
   data.frame(group = c(rep('a', 4), rep('b', 4), rep('c', 4))) |>  # define a sample
   assignPlatePosition() |>
   blockRandom(x = "group") |> 
   insertSamples(stdName = "clean", 
-        howoften=4, volume=2,
-        stdPosX='6', stdPosY='F', plate=1,
-        method="C:\\Xcalibur\\general_clean") |>
+        howoften = 4, volume = 2,
+        stdPosX = '6', stdPosY = 'F', plate = 1,
+        method = "C:\\Xcalibur\\general_clean") |>
   insertSamples(stdName = "autoQC01", 
-        howoften=4, volume=1,
-        stdPosX='8', stdPosY='F', plate=1,
-        method="C:\\Xcalibur\\autoQC01") 
+        howoften = 4, volume = 1,
+        stdPosX = '8', stdPosY = 'F', plate = 1,
+        method = "C:\\Xcalibur\\autoQC01") 
 ```
 
 <div class='note'>
@@ -115,15 +117,15 @@ op <- par(mar=c(4,4,1,1))
 ## Task 1: continued {.smaller}
 
 ```{r formatXCalibur}
+options(width=100)
 plate$id <- 1:nrow(plate)
 plate |>
   protViz:::formatXCalibur(path=sprintf("D:\\Data2San\\p%d\\Proteomics\\%s\\%s_%s",
                                         3000,
                                         "LTQFT_1",
-                                        "cpanse",
+                                        "login",
                                         format(Sys.time(), "%Y%m%d"))) |>
-  head() |>
-  knitr::kable()
+  tail() 
 ```
 </div>
 
@@ -165,7 +167,7 @@ text(iRTscore, rt, iRTmz, pos=1,cex=0.5)
 output [shown on dash board](http://fgcz-ms.uzh.ch/~cpanse/autoQC01.html)
 </div>
 
-## Task 3: Differential protein abundance analysis {.smaller .build}
+## Task 4: Differential protein abundance analysis {.smaller .build}
 
 ```{r data_ionstar,echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE, error=TRUE}
 d <- prolfqua::data_ionstar$filtered()               # load peptide level data
